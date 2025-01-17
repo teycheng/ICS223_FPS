@@ -16,6 +16,7 @@ public class Hole : MonoBehaviour
 
     void OnCollisionEnter()
     {
+        //collision does not work 
         if (collision.gameObject == "Ball")
         {
             Destroy(collision.gameObject);
