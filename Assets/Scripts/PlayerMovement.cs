@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    // public float speed = 5f;
+    private float speed = 15f;
     private Rigidbody rb;
     private float horizontalInput;
     private float verticalInput;
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput);
-        // rb.linearVelocity = movement;
-        rb.AddForce(movement*25);
+        rb.linearVelocity = movement * speed * 100 * Time.deltaTime;
+        //rb.AddForce(movement*25);
     }
 }
