@@ -14,10 +14,10 @@ public class Hole : MonoBehaviour
         
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
         //collision does not work 
-        if (collision.gameObject == "Ball")
+        if (collision.gameObject.CompareTag("Ball"))
         {
             Destroy(collision.gameObject);
         }
