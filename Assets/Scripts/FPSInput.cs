@@ -3,6 +3,7 @@ using UnityEngine;
 public class FPSInput : MonoBehaviour
 {
     private float speed = 9.0f;
+    [SerializeField] CharacterController charController;
     public float verticalInput;
     public float horizontalInput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,10 +15,18 @@ public class FPSInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput) * speed * Time.deltaTime;
-        transform.Translate(movement);
+        float horizInput = Input.GetAxis("Horizontal");
+        float vertInput = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(horizInput, 0, vertInput);
+        // Clamp magnitude to limit diagonal movement
+        movement = Vector3.ClampMagnitude(movement, 1.0f);
+        // take speed into account
+        movement *= speed;
+        // make movement processor independent
+        movement *= Time.deltaTime;
+        // Convert local to global coordinates
+        movement = transform.TransformDirection(movement);
+        charController.Move(movement);
     }
 
 }

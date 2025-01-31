@@ -6010,7 +6010,7 @@ MonoBehaviour:
   sensitivityVert: 9
   minVert: -45
   maxVert: 45
-  axes: 1
+  axes: 0
 --- !u!114 &1806562749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6023,6 +6023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02270ecee154e34a923c1c36c448a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charController: {fileID: 1806562744}
   verticalInput: 0
   horizontalInput: 0
 --- !u!1 &1826433070
