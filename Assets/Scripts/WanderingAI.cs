@@ -6,6 +6,7 @@ public class WanderingAI : MonoBehaviour
     private float enemySpeed = 3.0f;
     private float obstacleRange = 5.0f;
     private float sphereRadius = 0.75f;
+
     private EnemyStates state;
     [SerializeField] private GameObject laserbeamPrefab;
     private GameObject laserbeam;
@@ -25,8 +26,10 @@ public class WanderingAI : MonoBehaviour
             // Move Enemy
             Vector3 movement = Vector3.forward * enemySpeed * Time.deltaTime;
             transform.Translate(movement);
+
             // generate Ray
             Ray ray = new Ray(transform.position, transform.forward);
+
             // Spherecast and determine if Enemy needs to turn
             RaycastHit hit;
             if (Physics.SphereCast (ray, sphereRadius, out hit)) {
