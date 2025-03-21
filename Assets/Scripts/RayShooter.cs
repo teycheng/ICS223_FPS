@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class RayShooter : MonoBehaviour
+public class RayShooter : ActiveDuringGamePlay
 {
     //[SerializeField]
     //private int aimSize = 16;
@@ -10,12 +10,12 @@ public class RayShooter : MonoBehaviour
     private Camera cam;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // hide the mouse cursor
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-    }
+    //void Start()
+    //{
+    //    // hide the mouse cursor
+    //    //Cursor.lockState = CursorLockMode.Locked;
+    //    //Cursor.visible = false;
+    //}
 
     // Update is called once per frame
     void Update () {
@@ -53,4 +53,13 @@ public class RayShooter : MonoBehaviour
     //    float posY = cam.pixelHeight / 2 - aimSize / 2;
     //    GUI.Label (new Rect (posX, posY, aimSize, aimSize), "*", style);
     //}
+    void OnEnable()
+    {
+        Debug.Log("RayShooter.OnEnable()");
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("RayShooter.OnDisable()");
+    }
 }

@@ -1,44 +1,35 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class SettingsPopUp : MonoBehaviour
+public class SettingsPopUp : BasePopup
 {
     [SerializeField] private Slider difficultySlider;
     [SerializeField] private TextMeshProUGUI difficultyLabel;
     [SerializeField] private Button okButton;
     [SerializeField] private Button cancelButton;
     [SerializeField] private OptionsPopup optionsPopUp;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    public void Open()
+    override public void Open()
     {
-        gameObject.SetActive(true);
+        base.Open();
+        //gameObject.SetActive(true);
         difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
         UpdateDifficulty(difficultySlider.value);
-    }
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
-    public bool IsActive()
-    {
-        return gameObject.activeSelf;
+        Messenger<int>.Broadcast(GameEvent.DIFFICULTY_CHANGED, (int)difficultySlider.value);
     }
     public void OnOKButton()
     {
         Close();
         optionsPopUp.Open();
         PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
+        Messenger<int>.Broadcast(GameEvent.DIFFICULTY_CHANGED, (int)difficultySlider.value);
     }
 
     public void OnCancelButton()
     {
         Close();
         optionsPopUp.Open();
+        Messenger.Broadcast(GameEvent.POPUP_OPEN);
     }
     public void UpdateDifficulty(float difficulty)
     {

@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour {
     private int health;
+    private int maxHealth = 5;
     // Use this for initialization
     void Start () {
-        health = 5;
+        health = maxHealth;
+
     }
     public void Hit() {
         health -= 1;
@@ -12,5 +14,7 @@ public class PlayerCharacter : MonoBehaviour {
         if (health == 0) {
             Debug.Break();
         }
+        float healthPercentage = (float)health / maxHealth;
+        Messenger<float>.Broadcast(GameEvent.HEALTH_CHANGED, healthPercentage);
     }
 }

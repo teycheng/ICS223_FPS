@@ -1,9 +1,15 @@
 using UnityEngine;
 using System.Collections;
-public class MouseLook : MonoBehaviour
+
+public class MouseLook : ActiveDuringGamePlay
 {
     // enum to set values by name instead of number.
     // makes code more readable!
+
+    public override void Start()
+    {
+        base.Start();
+    }
     public enum RotationAxes
     {
         MouseXAndY,
@@ -44,4 +50,15 @@ public class MouseLook : MonoBehaviour
 
         }
     }
+
+    void OnEnable()
+    {
+        Debug.Log("MouseLook.OnEnable()");
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("MouseLook.OnDisable()");
+    }
+
 }

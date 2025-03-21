@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19166073, g: 0.6886792, b: 0.19166073, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14186,6 +14186,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8976788745622464639, guid: 552a12624fbb9f04fae29ed19a232405, type: 3}
   iguanaPrefab: {fileID: 141256, guid: b4806bcfd71324778b360c0299195b34, type: 3}
   iguanaSpawnPoint: {fileID: 313618677}
+  ui: {fileID: 537101422}
 --- !u!4 &1983926541
 Transform:
   m_ObjectHideFlags: 0

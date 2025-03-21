@@ -1,22 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsPopup : MonoBehaviour
+public class OptionsPopup : BasePopup
 {
     [SerializeField] UIManager uiManager;
     [SerializeField] SettingsPopUp settingsPopUp;
-    public void Open()
-    {
-        gameObject.SetActive(true);
-    }
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
-    public bool IsActive()
-    {
-        return gameObject.activeSelf;
-    }
+
     public void OnSettingsButton()
     {
         Debug.Log("settings clicked");
@@ -32,6 +21,7 @@ public class OptionsPopup : MonoBehaviour
     {
         Debug.Log("return to game");
         Close();
+        //Messenger.Broadcast(GameEvent.POPUP_OPEN);
         uiManager.SetGameActive(true);
     }
 }
